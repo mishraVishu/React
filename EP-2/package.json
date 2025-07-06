@@ -1,0 +1,32 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "\"This is React\"",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mishraVishu/React.git"
+  },
+  "keywords": [
+    "react",
+    "ReactDev"
+  ],
+  "author": "Vaishali Mishra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mishraVishu/React/issues"
+  },
+  "homepage": "https://github.com/mishraVishu/React#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "browserList":[
+    "last 2 verions"
+  ]
+}
