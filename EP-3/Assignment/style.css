@@ -1,0 +1,14 @@
+.title{
+    color:red;
+}
+
+div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px;
+    width:100%;
+    height:5vw;
+    background-color: blueviolet;
+    color:white;
+}
