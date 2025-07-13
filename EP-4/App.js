@@ -39,6 +39,7 @@ const Header = () => {
 
 const ResturantCard = ({data}) => {
     // console.log(data);
+    // console.log(React,ReactDOM)
     const {name, locality, avgRating, cuisines, deliveryTime,cloudinaryImageId} = data.info;
     return(
         <div className="res-card">
