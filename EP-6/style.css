@@ -1,0 +1,141 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo>img {
+    height: 90px;
+}
+
+.nav-items>ul {
+    display: flex;
+    list-style: none;
+    padding:10px;
+}
+
+.nav-items>ul>li {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.body>.res-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.body>.res-container>.res-card{
+    display: flex;
+    flex-direction: column;
+    height:300px;
+    width:300px;
+    padding:10px;
+    transition: transform 0.05s ease-in-out,
+}
+
+.res-card:hover{
+    cursor: pointer;
+    transform: scale(0.9);
+}
+
+.res-card>.food-logo>img{
+    height:200px;
+    width:250px;
+    border-radius: 15px;
+}
+
+.description{
+    display: flex;
+    flex-direction: column;
+    margin:0 20px;
+}
+
+.description>h3{
+    margin-bottom: -11px;
+}
+
+.description>.details{
+    display: flex;
+    width:200px;
+    justify-content: space-between;
+}
+
+.description>p{
+   margin-top:-11px;
+   color:rgb(110, 106, 106);
+}
+
+.description>.details>.time{
+    font-weight: 700;
+   
+}
+
+.filter{
+    display: flex;
+    gap:1rem;
+}
+
+.search input{
+    border-radius: 5px;
+    padding:5px;
+    border: 1px solid  black;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search input:focus{
+    border: 2px solid green;
+    border-radius: 5px;
+    padding:5px;
+}
+
+.filter-btn{
+    padding:0.5rem;
+    border-radius: 10px;
+    background-color: green;
+    color:white;
+    border:none;
+    cursor: pointer;
+}
+
+.login-btn{
+    padding:1rem;
+    border-radius: 10px;
+    background-color: green;
+    color:white;
+    border:none;
+    cursor: pointer;
+}
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card{
+    margin:50px;
+    height: 200px;
+    width: 200px;
+    background-color: #f0f0f0;
+    transform: scale(50%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+      transform: scale(0%);
+    }
+    25% {
+      transform: scale(50%);
+    }
+    50% {
+      transform: scale(0%);
+    }
+    75% {
+      transform: scale(50%);
+    }
+    100% {
+      transform: scale(0%);
+    }
+  }
