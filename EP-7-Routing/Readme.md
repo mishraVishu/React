@@ -1,7 +1,7 @@
 ## React Router DOM 
 
 - it is a library which we used for routing in React application. 
-- for this we need to export (named export) {createBrowserRoute, RouterProvider} from 'react-dom';
+- for this we need to export (named export) {createBrowserRouter, RouterProvider} from 'react-dom';
 - then we need to configure createBrowserRouter which takes an array of object which is basically path configuration.
 
 const routes = createBrowserRouter([

@@ -1,7 +1,8 @@
 import ResturantCard from "./RestaurantCard";
 import Shimmer from "./shimmer";
 import { useEffect, useState } from "react";
-import {Link} from "react-router"
+import {Link} from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
 
@@ -32,6 +33,11 @@ const Body = () => {
     // this will print first then useEffect is called because component is rendered first .
     // Whenever state vaiable updates, React triggers reconcilliation cycle(re-renders the component)
     console.log('Body rendered');
+
+    const onlineStatus = useOnlineStatus();
+
+    if(onlineStatus === false)
+        return <h1>OOPS no internet connection!!!. Looks like your internet connection is gone.</h1>
 
     return res.length === 0 ? <Shimmer /> : (
         <div className="body">

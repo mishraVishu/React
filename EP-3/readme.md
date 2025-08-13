@@ -6,7 +6,7 @@
 - Local Server
 - HMR = Hot Module Replacement
 - File Watching Algorithm - written in C++
-- usees caching for faster Builds ,      Parcel Cache is keeping cache of whatever we are doing
+- usees caching for faster Builds , Parcel Cache is keeping cache of whatever we are doing.
 - Image optimization
 - minification of files
 - Bundling
