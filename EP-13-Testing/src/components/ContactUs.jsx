@@ -1,10 +1,10 @@
 const ContactUs = () => {
     return(
         <>
-            <div className="w-full max-w-xl mx-auto p-2 sm:p-4 text-center text-xl">Contact Us</div>
+            <h1 className="w-full max-w-xl mx-auto p-2 sm:p-4 text-center text-xl">Contact Us</h1>
             <form className="flex justify-center items-center flex-col">
                 <div>
-                    <label>Name</label>
+                    <label htmlFor="name">Name</label>
                     <input className="border border-black p-2 m-2 rounded-lg focus:border-blue-500" type="text" id="name"/>
                 </div>
                 <div>
