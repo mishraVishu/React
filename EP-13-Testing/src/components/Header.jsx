@@ -33,7 +33,7 @@ const Header = () => {
                         <li className="font-bold text-base sm:text-sm font-serif"> <Link className="link" to='/about'>About Us</Link></li>
                         <li className="font-bold text-base sm:text-sm font-serif"> <Link className="link" to='/contactus'>Contact</Link></li>
                         <li className="font-bold text-base sm:text-sm font-serif"> <Link className="link" to='/grocery'>Grocery</Link></li>
-                        <li className="relative"> <Link to='/cart'><FaShoppingCart className="size-7"/></Link><div className="rounded-full bg-green-600 absolute p-2 bottom-6 left-3">{cartItems.length}</div></li>
+                        <li className="relative"> <Link to='/cart'><FaShoppingCart className="size-7"/></Link><div className="rounded-full bg-green-600 absolute p-2 bottom-6 left-3" data-testid="cart">{cartItems.length}</div></li>
                         <li>
                             <button className="rounded-lg bg-green-600 px-6 py-2 w-full sm:w-auto" onClick={() => { btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");}}>{btnName}</button>
                         </li>

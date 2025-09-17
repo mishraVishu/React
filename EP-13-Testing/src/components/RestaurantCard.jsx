@@ -6,7 +6,7 @@ const ResturantCard = ({data}) => {
     const {name, locality, avgRating, cuisines, deliveryTime,cloudinaryImageId} = data?.info;
 
     return(
-        <div>
+        <div data-testid="resCard">
             <div className="m-2 sm:m-4 p-2 sm:p-4">
                 <img className="h-40 sm:h-56 w-full sm:w-72 md:w-96 rounded-xl hover:scale-110 transition-transform duration-200" src={`${CDN_URL}${cloudinaryImageId}`} alt="food image"></img>
             </div>

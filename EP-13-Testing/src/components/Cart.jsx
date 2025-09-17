@@ -85,7 +85,7 @@ const Cart = () => {
             item?.card?.info?.defaultPrice || item?.card?.info?.price || 0;
 
           return (
-            <div className="flex justify-around m-5 w-full" key={id}>
+            <div className="flex justify-around m-5 w-full" key={id} data-testid="cartItem">
               <div className="flex w-full justify-around">
                 <div className="flex gap-2">
                   <span title="Veg">
@@ -107,13 +107,15 @@ const Cart = () => {
                 </div>
                 <div className="border border-black flex">
                   <div
+                    data-testid="decrement"
                     className="p-2 cursor-pointer"
                     onClick={() => handleDecrement(id)}
                   >
                     -
                   </div>
-                  <div className="p-2">{qty}</div>
+                  <div className="p-2" data-testid="qty">{qty}</div>
                   <div
+                    data-testid="increment"
                     className="p-2 cursor-pointer"
                     onClick={() => handleIncrement(id)}
                   >

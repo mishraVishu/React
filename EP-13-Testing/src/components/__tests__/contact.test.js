@@ -5,7 +5,23 @@ import ContactUs from '../ContactUs';
 
 describe("Contact Us Page Test Cases",()=>{
 
-    //we can also write it instead of test
+beforeAll(()=>{
+    // console.log("before All");
+});
+
+beforeEach(()=>{
+    // console.log("Before Each");
+});
+
+afterEach(()=>{
+    // console.log("After Each")
+});
+
+afterAll(()=>{
+    // console.log("After all");
+});
+
+ //we can also write it instead of test
 it("Should load contact us component",()=>{
     render(<ContactUs/>);
 

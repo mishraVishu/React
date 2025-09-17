@@ -12,7 +12,7 @@ const Body = () => {
 
     // useEffect hook is called just after components finishes rendering
     useEffect(() => {
-        console.log('useEffect called');
+        //console.log('useEffect called');
         fetchData();
     }, []);
 
@@ -22,6 +22,8 @@ const Body = () => {
             const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.57590&lng=77.33450&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
             const json = await data.json();
+            //console.log(json);
+            
             restaurants = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
             restaurants.map((res,i)=>i%2===0 ? res.info.promoted = true : res.info.promoted = false)
             setRes(restaurants);
@@ -34,7 +36,7 @@ const Body = () => {
 
     // this will print first then useEffect is called because component is rendered first .
     // Whenever state vaiable updates, React triggers reconcilliation cycle(re-renders the component)
-    console.log('Body rendered',res);
+    //console.log('Body rendered',res);
 
     const RestaurantWithPromoted = WithPromotedLabel(ResturantCard);
 

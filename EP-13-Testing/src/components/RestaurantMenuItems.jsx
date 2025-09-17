@@ -28,21 +28,21 @@ const RestaurantMenuItems = ({ data }) => {
     // Toggle logic for multi-open
     const handleClick = (idx) => {
         setOpenIndex(prev => {
-            console.log(prev);
+            //console.log(prev);
             return prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx];
         });
         setOpenCategory(prev => {
-            console.log(prev);
+            //console.log(prev);
             const newState = { ...prev };
             if (prev[idx]) delete newState[idx];
-            console.log(newState);
+            //console.log(newState);
             return newState;
         });
     };
 
     const handleCategoryClick = (mainIdx, catIdx) => {
         setOpenCategory(prev => {
-            console.log(prev);
+            //console.log(prev);
             const current = prev[mainIdx] || [];
             return {
                 ...prev,
@@ -86,9 +86,9 @@ const RestaurantMenuItems = ({ data }) => {
         <div className="bg-pink-50 relative">
             <ToastContainer />
             {data.map((card, idx) => (
-                <div className="p-4 mx-auto my-4 bg-white" key={card?.card?.card?.categoryId || idx}>
+                <div  className="p-4 mx-auto my-4 bg-white" key={card?.card?.card?.categoryId || idx}>
                     <div className="flex justify-between w-full cursor-pointer" onClick={() => handleClick(idx)}>
-                        <h2 className="font-bold text-xl">{card?.card?.card?.title}</h2>
+                        <h2 data-testid="arrow" className="font-bold text-xl">{card?.card?.card?.title}</h2>
                         <IoIosArrowUp />
                     </div>
                     {/* If main section is open and has itemCards, show them */}
@@ -99,14 +99,14 @@ const RestaurantMenuItems = ({ data }) => {
                             displayDesc = [desc.slice(0, 50), <strong key="more">...more</strong>];
                         }
                         return (
-                            <div className="flex w-full border-b-2 border-gray-200 my-2 p-6" key={card?.card?.info?.id || i}>
+                            <div data-testid="foodItems" className="flex w-full border-b-2 border-gray-200 my-2 p-6" key={card?.card?.info?.id || i}>
                                 <div className="w-10/12">
                                     <h2 className="font-bold text-lg my-2">{card?.card?.info?.name}</h2>
                                     <h3 className="font-bold text-sm">{card?.card?.info?.defaultPrice ? '₹' + (card?.card?.info?.defaultPrice / 100) : '₹' + (card?.card?.info?.price / 100)}</h3>
                                     <h5 className="font-bold my-4 text-green-600 text-sm">{`⭐️ ${card?.card?.info?.ratings?.aggregatedRating?.rating || 4.2} (${card?.card?.info?.ratings?.aggregatedRating?.ratingCountV2 || 239})`}</h5>
                                     {descState === card?.card?.info?.id ? (
-                                        <p className="text-sm text-gray-500 mb-4 cursor-pointer" onClick={() => { descpHandler(card?.card?.info?.id, displayDesc, desc) }}>{desc}</p>
-                                    ) : <p className="text-sm text-gray-500 mb-4 cursor-pointer" onClick={() => { descpHandler(card?.card?.info?.id, displayDesc, desc) }}>{displayDesc}</p>}
+                                        <p className="text-sm text-gray-500 mb-4 cursor-pointer" data-testid="desp" onClick={() => { descpHandler(card?.card?.info?.id, displayDesc, desc) }}>{desc}</p>
+                                    ) : <p className="text-sm text-gray-500 mb-4 cursor-pointer" data-testid="desp" onClick={() => { descpHandler(card?.card?.info?.id, displayDesc, desc) }}>{displayDesc}</p>}
                                 </div>
                                 <div className="relative">
                                     <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${card?.card?.info?.imageId}`} alt="image" className="size-44 rounded-lg mt-2" />
@@ -119,7 +119,7 @@ const RestaurantMenuItems = ({ data }) => {
                         (openIndex.includes(idx) && Array.isArray(card?.card?.card?.categories)) && card?.card?.card?.categories.map((category, catIdx) => (
                             <div key={category.id || catIdx}>
                                 <div className="flex justify-between w-full cursor-pointer" onClick={() => handleCategoryClick(idx, catIdx)}>
-                                    <h2 className="font-bold text-lg">{category.title}</h2>
+                                    <h2 data-testid="catArrow" className="font-bold text-lg">{category.title}</h2>
                                     <IoIosArrowUp />
                                 </div>
                                 {/* Only show items if this subcategory is open */}
@@ -130,7 +130,7 @@ const RestaurantMenuItems = ({ data }) => {
                                         displayDesc = [desc.slice(0, 50), <strong key="more">...more</strong>];
                                     }
                                     return (
-                                        <div key={card?.card?.info?.id || i} className="flex justify-between w-full border-b-2 border-gray-200 p-6">
+                                        <div data-testid="subCartItem" key={card?.card?.info?.id || i} className="flex justify-between w-full border-b-2 border-gray-200 p-6">
                                             <div className="w-10/12">
                                                 <h2 className="font-bold text-md my-2">{card?.card?.info?.name}</h2>
                                                 <h3 className="font-bold text-sm">{card?.card?.info?.defaultPrice ? '₹' + (card?.card?.info?.defaultPrice / 100) : '₹' + (card?.card?.info?.price / 100)}</h3>
