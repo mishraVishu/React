@@ -58,6 +58,7 @@ const RestaurantMenu = () => {
         return <Shimmer />
     }
 
+    console.log(resInfo);
     const { offers } = resInfo?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle || {};
 
     return (

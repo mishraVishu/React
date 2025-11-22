@@ -21,7 +21,7 @@ const Header = () => {
         <header className="w-full shadow-md bg-white font-[Gilory]">
             <div className="flex flex-col sm:flex-row justify-between items-center p-2 sm:p-4 w-full max-w-6xl mx-auto">
                 <div className="flex justify-between items-center w-full sm:w-auto mb-2 sm:mb-0">
-                    <img src={LOGO_URL} className="w-20 sm:w-36 mx-auto"/>
+                    <img src={LOGO_URL} className="w-20 sm:w-20 mx-auto"/>
                     <button className="sm:hidden text-2xl p-2" onClick={() => setMenuOpen(!menuOpen)}>
                         <FaBars />
                     </button>
