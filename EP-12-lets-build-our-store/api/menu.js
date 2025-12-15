@@ -16,6 +16,7 @@ export default async function handler(req, res) {
     });
 
     const json = await response.json();
+    res.setHeader('Access-Control-Allow-Origin','*')
     return res.status(200).json(json);
   } catch (err) {
     return res.status(500).json({ error: "Failed to fetch Swiggy API", details: err });

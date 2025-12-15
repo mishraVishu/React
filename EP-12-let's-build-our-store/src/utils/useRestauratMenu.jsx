@@ -10,7 +10,8 @@ const useRestaurantMenu = (resId) => {
     let json = {};
     const fetchMenu = async() => {
         try {
-            const data = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.57590&lng=77.33450&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`);
+            const data = await fetch(`https://apis-92ocfwrxx-mishravishus-projects.vercel.app/api/swiggy?resId=${resId}`);
+            console.log(data)
             json = await data.json();
             console.log(json);
         } catch (error) {
