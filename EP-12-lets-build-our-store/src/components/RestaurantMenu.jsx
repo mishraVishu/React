@@ -21,7 +21,7 @@ const RestaurantMenu = () => {
     const resInfo = useRestaurantMenu(resId);
 
     // Defensive check for REGULAR card group
-    const regularCardGroup = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR;
+    const regularCardGroup = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR;
     const cards = regularCardGroup?.cards || [];
     let itemCards = cards.filter(card => {
         if (card?.card?.card?.['@type'] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") {
@@ -31,6 +31,7 @@ const RestaurantMenu = () => {
             return card;
         }
     });
+    console.log(itemCards)
 
     // Defensive info extraction
     const info = resInfo?.data?.cards[2]?.card?.card?.info || {};
@@ -59,23 +60,23 @@ const RestaurantMenu = () => {
     }
 
     console.log(resInfo);
-    const { offers } = resInfo?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle || {};
+    const { offers } = resInfo?.cards[3]?.card?.card?.gridElements?.infoWithStyle || {};
 
     return (
         <div className="flex justify-center items-center gap-4 flex-col">
             <h1 className="text-left text-4xl font-bold mt-8">{name}</h1>
-            <div className="flex justify-center flex-col h-48 w-1/2 md:w-1/2 lg:w-1/2 2xl:w-1/3 xl:w-1/2  border-2 shadow-xl shadow-gray-500 border-solid border-gray rounded-xl p-4" >
+            <div className="flex justify-center flex-col h-28 w-80 md:h-48 lg:h-48 md:w-1/2 lg:w-1/2 2xl:w-1/3 xl:w-1/2  border-2 shadow-xl shadow-gray-500 border-solid border-gray rounded-xl p-4" >
                 <div className="flex gap-4">
-                    <h4>⭐️ {avgRating}</h4>
-                    <h4>{costForTwoMessage}</h4>
+                    <h4>⭐️ {avgRating ? avgRating :'4.2'}</h4>
+                    <h4>{costForTwoMessage ? costForTwoMessage : '₹250'}</h4>
                 </div>
                 <p className="text-orange-600 font-bold underline decoration-orange-600">{Array.isArray(cuisines) ? cuisines.join(",") : ''}</p>
                 <div className="place-date">
-                    <p className="font-bold">outlet: {areaName}</p>
-                    <p className="font-bold">{minDeliveryTime} - {maxDeliveryTime} mins</p>
+                    <p className="font-bold">outlet: {areaName ? areaName : 'Surya Nagar'}</p>
+                    <p className="font-bold">{minDeliveryTime ? minDeliveryTime : 30} - {maxDeliveryTime ? maxDeliveryTime : 35} mins</p>
                 </div>
             </div>
-            <div className="w-1/2 md:w-1/2 lg:w-1/2 2xl:w-1/3 xl:w-1/2">
+            <div className="w-80 md:w-1/2 lg:w-1/2 2xl:w-1/3 xl:w-1/2">
                 <div className="flex justify-between">
                     <h2 className="font-bold text-xl">Deals for you</h2>
                     <div className="flex gap-2">
@@ -91,7 +92,7 @@ const RestaurantMenu = () => {
                                     <div className="font-bold text-orange-600">{offer?.info?.offerTag}</div>
                                     <div className="flex flex-col">
                                         <h4 className="font-bold">{offer?.info?.header}</h4>
-                                        <h5 className="text-gray-400">{offer?.info?.description.toUpperCase()}</h5>
+                                        <h5 className="text-gray-400">{offer?.info?.description?.toUpperCase()}</h5>
                                     </div>
                                 </div>
                             </React.Fragment>
@@ -99,7 +100,7 @@ const RestaurantMenu = () => {
                     })}
                 </div>
             </div>
-            <div className="w-1/2 md:w-1/2 lg:w-1/2 2xl:w-1/3 xl:w-1/2">
+            <div className="w-80 md:w-1/2 lg:w-1/2 2xl:w-1/3 xl:w-1/2">
                 <h1 className="font-bold text-md">Menu</h1>
                 <RestaurantMenuItems data={itemCards} />
             </div>

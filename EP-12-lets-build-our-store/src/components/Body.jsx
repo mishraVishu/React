@@ -19,10 +19,14 @@ const Body = () => {
     let restaurants = [];
     const fetchData = async () => {
         try{
-            const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.57590&lng=77.33450&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+            const endPoint = window.innerWidth < 1024 ? "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.57590&lng=77.33450&carousel=true&third_party_vendor=1" : "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.57590&lng=77.33450&is-seo-homepage-enabled=true" ;
+
+            const data = await fetch(endPoint);
 
             const json = await data.json();
             restaurants = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+            console.log(restaurants);
+            
             restaurants.map((res,i)=>i%2===0 ? res.info.promoted = true : res.info.promoted = false)
             setRes(restaurants);
             setTempList(restaurants);
@@ -44,20 +48,20 @@ const Body = () => {
         return <h1>OOPS no internet connection!!!. Looks like your internet connection is gone.</h1>
 
     return Array.isArray(res) && res.length === 0 ? <Shimmer /> : (
-        <div>
-            <div className="flex m-4 p-4">
+        <div className="w-full flex flex-col items-center">
+            <div className="flex m-2 p-2">
                 <div className="search">
                     <input className="border-green-600 border-solid border-2 rounded-md px-2 mr-4" type="text" onChange={(e) => {
                         const matchedList = Array.isArray(res) ? res.filter(res => res?.info?.name?.toLowerCase().includes(e.target.value.toLocaleLowerCase())) : [];
                         setTempList(matchedList);
                      }} placeholder="search..."></input>
                 </div>
-                <button className="rounded-lg bg-green-600 px-8 w-auto" onClick={() => {
+                <button className="rounded-lg bg-green-600  text-xs md:text-base lg:text-base px-2 w-auto" onClick={() => {
                     const filteredList = Array.isArray(res) ? res.filter(res => res.info?.avgRating > 4.3) : [];
                     setTempList(filteredList);
                 }}>Top Rated Restaurants </button>
             </div>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="w-full flex flex-wrap justify-center items-center gap-4">
                 {
                     Array.isArray(tempList) ? tempList.map(res => <Link className="link" key={res.info?.id} to={`/restaurants/${res?.info?.id}`}>{ res?.info?.promoted ? (<RestaurantWithPromoted data = {res}/>) : (<ResturantCard data={res} /> )} </Link>) : null
                 }

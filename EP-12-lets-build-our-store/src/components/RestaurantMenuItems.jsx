@@ -67,7 +67,6 @@ const RestaurantMenuItems = ({ data }) => {
     const dispatch = useDispatch();
     
     const handleAddItem = (item) => {
-        item
         // Dispatch an Action
         dispatch(addItem(item));
         toast.success("Item added successfully", {
@@ -78,7 +77,8 @@ const RestaurantMenuItems = ({ data }) => {
             pauseOnHover: false,
             draggable: false,
             progress: undefined,
-            theme: "colored"
+            theme: "colored",
+            className: "custom-toast"
         });
     }
 

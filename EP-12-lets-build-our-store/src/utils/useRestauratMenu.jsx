@@ -1,25 +1,24 @@
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
+import resData from './resData.json';
 
 const useRestaurantMenu = (resId) => {
     const [resInfo, setResInfo] = useState(null);
 
     useEffect(() => {
+        const fetchMenu = async () => {
+            try {
+                const data = await fetch(`https://swiggy-clone-5sy64gpxe-mishravishus-projects.vercel.app/api/menu?resId=${resId}`);
+                const resDataApi = await data.json();
+                setResInfo(resDataApi?.data); // Use API data if fetch succeeds
+                console.log('useRestaurantMenu', resDataApi?.data); // Debugging
+            } catch (error) {
+                console.log('Error while Fetching restaurants menu data, using local resData.json', error);
+                setResInfo(resData.data); // Fallback to local resData.json
+            }
+        };
         fetchMenu();
-    },[]);
+    }, [resId]);
 
-    let json = {};
-    const fetchMenu = async() => {
-        try {
-            const data = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.57590&lng=77.33450&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`);
-
-            json = await data.json();
-            console.log(json);
-        } catch (error) {
-            console.log('Error while Fetching restaurants menu data', error);
-        }
-        setResInfo(json);
-        console.log('useRestaurantMenu', json); // Debugging line to check the fetched data
-    }
     return resInfo;
 }
 

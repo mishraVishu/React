@@ -4,6 +4,18 @@ body {
   font-family: Gilroy, Arial, 'Helvetica Neue', sans-serif;
 }
 
+.custom-toast {
+  font-size: 1rem;
+}
+@media (max-width: 768px) {
+  .custom-toast {
+    font-size: 0.75rem;
+    min-width: 180px;
+    max-width: 80vw;
+    margin: 2rem;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

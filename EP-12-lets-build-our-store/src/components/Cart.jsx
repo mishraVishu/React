@@ -65,7 +65,7 @@ const Cart = () => {
     <>
     <div className="flex justify-center m-7"><button className="bg-green-600 p-2 text-black rounded-lg" onClick={clearCartHandler}>Clear Cart</button></div>
     <div className="flex justify-center items-center w-full m-2">
-      {itemsList.length >0 ? <div className="flex justify-center items-center bg-pink-100 flex-col w-1/2 md:w-1/2 lg:w-1/2 2xl:w-1/3 xl:w-1/2 rounded-lg p-7">
+      {itemsList.length >0 ? <div className="flex justify-center items-center bg-pink-100 flex-col w-full md:w-1/2 lg:w-1/2 2xl:w-1/3 xl:w-1/2 rounded-lg p-4 md:p-7 lg:p-7 m-4">
         <div className="flex gap-4">
           <img
             src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${imageId}`}
@@ -103,7 +103,7 @@ const Cart = () => {
                       <circle cx="10" cy="10" r="5" fill="#008000" />
                     </svg>
                   </span>
-                  <h3>{item?.card?.info?.name}</h3>
+                  <h3 className="text-sm">{item?.card?.info?.name}</h3>
                 </div>
                 <div className="border border-black flex">
                   <div
@@ -121,7 +121,7 @@ const Cart = () => {
                   </div>
                 </div>
                 <div>
-                  <h3>
+                  <h3 className="text-sm">
                     ₹{(qty * (price / 100)).toFixed(2)}
                   </h3>
                 </div>
